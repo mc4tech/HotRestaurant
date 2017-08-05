@@ -41,24 +41,26 @@ var reservations = [{
   customerID: 2
 }];
 
+// Waitlist (DATA)
+// =============================================================
 var waitlist = [{
-  routeName: "1",
-  CustomerName: "John Smith",
-  phoneNumber: "678-231-7678",
-  customerEmail: "jsmith@email.com",
-  customerID: 1
+  routeName: "3",
+  customerName: "Jimmy",
+  phoneNumber: "555-555-5555",
+  customerEmail: "eatworld@email.com",
+  customerID: 3
 }, {
-  routeName: "2",
-  CustomerName: "James Brown",
-  phoneNumber: "470-452-5873",
-  customerEmail: "JB@email.com",
-  customerID: 2
+  routeName: "4",
+  customerName: "Papa Roach",
+  phoneNumber: "234-243-2155",
+  customerEmail: "cutmylife@intopieces.com",
+  customerID: 4
 }];
 
 // Routes
 // =============================================================
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "homepage.html"));
+  res.sendFile(path.join(__dirname, "home.html"));
 });
 
 app.get("/tables", function(req, res) {
@@ -82,7 +84,6 @@ app.get("/api/tables", function(req, res) {
 
 
 
-
 // Create new reservation - takes in JSON formatted input
 // =============================================================
 app.post("/newreservation", function(req, res) {
@@ -96,7 +97,6 @@ app.post("/newreservation", function(req, res) {
   res.json(newReservation);
 });
 // =============================================================
-
 
 
 // listening on PORT 3000
