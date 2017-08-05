@@ -31,7 +31,33 @@ var reservations = [{
   customerID: 2
 },
 }];
+
+// Routes
 // =============================================================
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "index.html"));
+});  
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+
+///////////api routes
+//shows waitlist object
+app.get("/api/waitlist", function(req, res) {
+  res.json(waitlist);
+});
+
+//shows reservations object
+app.get("/api/tables", function(req, res) {
+  res.json(reservations);
+});
+
 
 // listening on PORT 3000
 // =============================================================
