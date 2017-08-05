@@ -17,7 +17,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Reservation (DATA)
 // =============================================================
-var characters = [{
+var reservations = [{
   routeName: "1",
   CustomerName: "Mike Jones",
   phoneNumber: "404-251-5378",
@@ -31,4 +31,10 @@ var characters = [{
   customerID: 2
 },
 }];
+// =============================================================
 
+// listening on PORT 3000
+// =============================================================
+app.listen((process.env.PORT || 3000), function() {
+  console.log("App listening on PORT " + PORT);
+});
