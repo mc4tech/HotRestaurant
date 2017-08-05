@@ -15,17 +15,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-
-
-
-
-
-
-
-
-
-
-
+// Reservation (DATA)
+// =============================================================
+var reservations = [{
+  routeName: "1",
+  CustomerName: "Mike Jones",
+  phoneNumber: "404-251-5378",
+  customerEmail: "whowhomikeJones@email.com",
+  customerID: 1
+}, {
+  routeName: "2",
+  CustomerName: "Julio Jones",
+  phoneNumber: "404-243-7893",
+  customerEmail: "JJones@email.com",
+  customerID: 2
+},
+}];
+// =============================================================
 
 // listening on PORT 3000
 // =============================================================
