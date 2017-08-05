@@ -41,6 +41,20 @@ var reservations = [{
   customerID: 2
 }];
 
+var waitlist = [{
+  routeName: "1",
+  CustomerName: "John Smith",
+  phoneNumber: "678-231-7678",
+  customerEmail: "jsmith@email.com",
+  customerID: 1
+}, {
+  routeName: "2",
+  CustomerName: "James Brown",
+  phoneNumber: "470-452-5873",
+  customerEmail: "JB@email.com",
+  customerID: 2
+}];
+
 // Routes
 // =============================================================
 app.get("/", function(req, res) {
