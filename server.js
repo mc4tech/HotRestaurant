@@ -28,33 +28,33 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Reservation (DATA)
 // =============================================================
 var reservations = [{
-  routeName: "1",
+  routeName: "mikejones",
   customerName: "Mike Jones",
   phoneNumber: "404-251-5378",
   customerEmail: "whowhomikeJones@email.com",
-  customerID: 1
+  customerID: "Mike Jones"
 }, {
-  routeName: "2",
-  customerName: "Julio Jones",
+  routeName: "",
+  customerName: "julio",
   phoneNumber: "404-243-7893",
   customerEmail: "JJones@email.com",
-  customerID: 2
+  customerID: "Julio"
 }];
 
 // Waitlist (DATA)
 // =============================================================
 var waitlist = [{
-  routeName: "3",
+  routeName: "takessometime",
   customerName: "Jimmy",
   phoneNumber: "555-555-5555",
   customerEmail: "eatworld@email.com",
-  customerID: 3
+  customerID: "Takes some time"
 }, {
-  routeName: "4",
+  routeName: "paparoach",
   customerName: "Papa Roach",
   phoneNumber: "234-243-2155",
   customerEmail: "cutmylife@intopieces.com",
-  customerID: 4
+  customerID: "pAparOaCh"
 }];
 
 // Routes
@@ -88,7 +88,7 @@ app.get("/api/tables", function(req, res) {
 // =============================================================
 app.post("/newreservation", function(req, res) {
   var newReservation = req.body;
-  newReservation.routeName = newReservation.customerID;
+  newReservation.routeName = newReservation.customerID.replace(/\s+/g, "").toLowerCase();;
 
   console.log(newReservation);
 
