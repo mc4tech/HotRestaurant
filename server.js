@@ -41,20 +41,6 @@ var reservations = [{
   customerID: 2
 }];
 
-var waitlist = [{
-  routeName: "1",
-  CustomerName: "John Smith",
-  phoneNumber: "678-231-7678",
-  customerEmail: "jsmith@email.com",
-  customerID: 1
-}, {
-  routeName: "2",
-  CustomerName: "James Brown",
-  phoneNumber: "470-452-5873",
-  customerEmail: "JB@email.com",
-  customerID: 2
-}];
-
 // Routes
 // =============================================================
 app.get("/", function(req, res) {
@@ -82,7 +68,6 @@ app.get("/api/tables", function(req, res) {
 
 
 
-
 // Create new reservation - takes in JSON formatted input
 // =============================================================
 app.post("/newreservation", function(req, res) {
@@ -96,7 +81,6 @@ app.post("/newreservation", function(req, res) {
   res.json(newReservation);
 });
 // =============================================================
-
 
 
 // listening on PORT 3000
