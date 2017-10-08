@@ -1,107 +1,43 @@
-// Dependencies
-// =============================================================
+// ==============================================================================
+// DEPENDENCIES
+// Series of npm packages that we will use to give our server useful functionality
+// ==============================================================================
+
 var express = require("express");
 var bodyParser = require("body-parser");
-var path = require("path");
-// =============================================================
 
+// ==============================================================================
+// EXPRESS CONFIGURATION
+// This sets up the basic properties for our express server
+// ==============================================================================
 
-
-// Sets up the Express App
-// =============================================================
+// Tells node that we are creating an "express" server
 var app = express();
-var PORT = 3000;
-// =============================================================
 
+// Sets an initial port. We"ll use this later in our listener
+var PORT = process.env.PORT || 8080;
 
-
-// Sets up the Express app to handle data parsing
-// =============================================================
+// BodyParser makes it possible for our server to interpret data sent to it.
+// The code below is pretty standard.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-// =============================================================
 
+// ================================================================================
+// ROUTER
+// The below points our server to a series of "route" files.
+// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
+// ================================================================================
 
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
-// Reservation (DATA)
-// =============================================================
-var reservations = [{
-  routeName: "mikejones",
-  customerName: "Mike Jones",
-  phoneNumber: "404-251-5378",
-  customerEmail: "whowhomikeJones@email.com",
-  customerID: "Mike Jones"
-}, {
-  routeName: "",
-  customerName: "julio",
-  phoneNumber: "404-243-7893",
-  customerEmail: "JJones@email.com",
-  customerID: "Julio"
-}];
+// ==============================================================================
+// LISTENER
+// The below code effectively "starts" our server
+// ==============================================================================
 
-// Waitlist (DATA)
-// =============================================================
-var waitlist = [{
-  routeName: "takessometime",
-  customerName: "Jimmy",
-  phoneNumber: "555-555-5555",
-  customerEmail: "eatworld@email.com",
-  customerID: "Takes some time"
-}, {
-  routeName: "paparoach",
-  customerName: "Papa Roach",
-  phoneNumber: "234-243-2155",
-  customerEmail: "cutmylife@intopieces.com",
-  customerID: "pAparOaCh"
-}];
-
-// Routes
-// =============================================================
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
 });
-
-app.get("/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
-});
-
-app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
-});
-
-///////////api routes
-//shows waitlist object
-app.get("/api/waitlist", function(req, res) {
-  res.json(waitlist);
-});
-
-//shows reservations object
-app.get("/api/tables", function(req, res) {
-  res.json(reservations);
-});
-
-
-
-// Create new reservation - takes in JSON formatted input
-// =============================================================
-app.post("/newreservation", function(req, res) {
-  var newReservation = req.body;
-  newReservation.routeName = newReservation.customerID.replace(/\s+/g, "").toLowerCase();;
-
-  console.log(newReservation);
-
-  reservations.push(newReservation);
-
-  res.json(newReservation);
-});
-// =============================================================
-
-
-// listening on PORT 3000
-// =============================================================
-app.listen((process.env.PORT || 3000), function() {
-  console.log("App listening on PORT " + PORT);
-});
-//=============================================================
