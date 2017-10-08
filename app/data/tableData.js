@@ -7,10 +7,10 @@
 
 var tableArray = [
   {
-    customerName: "Ahmed",
-    customerEmail: "ahmed@example.com",
-    customerID: "afhaque89",
-    phoneNumber: "000-000-0000"
+     customerName: "John",
+    customerEmail: "john@example.com",
+    customerID: "jb89",
+    phoneNumber: "404-513-0489"
   }
 ];
 
